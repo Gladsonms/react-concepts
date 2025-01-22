@@ -1,3 +1,5 @@
 - React Tree shaking
 - atomic
 - Testing
+- HOc
+- ContextApi
