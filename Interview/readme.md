@@ -7,6 +7,8 @@
 
 ### Questions
 
+[React Interview Guide](https://assets.stanwith.me/live/msc/27140607/g1id2/reactcodinginterviewguide.pdf)
+
 
 𝗖𝗼𝗿𝗲 𝗖𝗼𝗻𝗰𝗲𝗽𝘁𝘀
 1. What are the key differences between React class components and functional components?
