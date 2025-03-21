@@ -5,7 +5,7 @@
 
 
 
-### Questions
+### Resources
 
 [React Interview Guide](https://assets.stanwith.me/live/msc/27140607/g1id2/reactcodinginterviewguide.pdf)
 
