@@ -1,0 +1,27 @@
+body{
+    background-color: black;
+    color: white;
+}
+
+.tab-header-container{
+    color: blue;
+    display:flex;
+    flex-direction: row;
+    border: 1px solid green;
+}
+
+.tab-content {
+padding:5px;
+border: 1px solid black;
+cursor: pointer;
+/* margin: 20px; */
+}
+
+.tab-body {
+    margin-top: 45px;
+    display: flex;
+    border: 5px dotted grey;
+    height: 75vh;
+    padding-top:20px;
+    padding-left: 20px;
+}
