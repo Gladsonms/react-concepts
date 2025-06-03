@@ -2,6 +2,9 @@ const Interest = () =>{
 return(
     <div>
         Interest
+        <label>
+            
+        </label>
     </div>
 )
 }
