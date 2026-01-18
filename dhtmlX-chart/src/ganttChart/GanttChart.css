@@ -1,0 +1,68 @@
+/* Yellow Theme Styles for dhtmlx Gantt */
+.gantt-container {
+  width: 100%;
+  height: 100vh;
+}
+
+/* Task bar colors */
+.gantt_task_line {
+  background-color: #FFD700 !important;
+  border-color: #FFA500 !important;
+}
+
+.gantt_task_progress {
+  background-color: #FFA500 !important;
+}
+
+.gantt_task_selected {
+  background-color: #FFC107 !important;
+}
+
+/* Link colors */
+.gantt_link_arrow {
+  stroke: #FFD700 !important;
+  fill: #FFD700 !important;
+}
+
+.gantt_link_line {
+  stroke: #FFD700 !important;
+}
+
+/* Grid colors */
+.gantt_grid_scale .gantt_grid_head_cell {
+  background-color: #FFF9C4 !important;
+  color: #333 !important;
+  font-weight: bold;
+  border-color: #FFD700 !important;
+}
+
+.gantt_scale_line {
+  background-color: #FFF9C4 !important;
+}
+
+.gantt_grid_data .gantt_row {
+  border-bottom: 1px solid #FFD700;
+}
+
+.gantt_task_cell {
+  border-right: 1px solid #FFD700;
+}
+
+/* Milestone styling */
+.gantt_task_milestone {
+  background-color: #FFD700 !important;
+  border-color: #FFA500 !important;
+}
+
+/* Project row styling */
+.gantt_task_project {
+  background-color: #FFE082 !important;
+  border-color: #FFA500 !important;
+}
+
+/* Tooltip styling */
+.gantt_tooltip {
+  background-color: #FFF9C4 !important;
+  border-color: #FFD700 !important;
+  color: #333 !important;
+}

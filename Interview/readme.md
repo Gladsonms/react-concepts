@@ -40,7 +40,7 @@
 20. How do you test a React component using Jest and React Testing Library?
 21. What are some strategies for debugging React applications?
 
-How to pass data from a -> b componet without redux,or props,conext
+22 . How to pass data from a -> b componet without redux,or props,conext
 
 
 

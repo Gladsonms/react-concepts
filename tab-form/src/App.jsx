@@ -1,12 +1,15 @@
-import TabForm from "./component/TabForm"
+import User from "./component/User/User"
 
 
 function App() {
+
+
   
 
   return (
     <>
-     <TabForm />
+     
+     <User />
     </>
   )
 }
