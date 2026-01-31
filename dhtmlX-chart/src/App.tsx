@@ -1,10 +1,10 @@
-import GanttChart from './ganttChart/GanttChart';
+import { GanttViewPage } from './pages/GanttView';
 import './App.css';
 
 function App() {
   return (
     <div className="app">
-      <GanttChart numberOfProjects={1000} numberOfTasksPerProject={40} />
+      <GanttViewPage />
     </div>
   );
 }

@@ -1,0 +1,127 @@
+/* Gantt View Page Styles */
+
+/* Task bar colors - Dark yellow for jobs only */
+.gantt_task_line {
+  background-color: #FFD700 !important;
+  border-color: #FFA500 !important;
+}
+
+.gantt_task_progress {
+  background-color: #FFA500 !important;
+}
+
+/* Line styles for connections */
+.gantt_line_wrapper .gantt_line {
+  stroke: red !important;
+}
+
+.gantt_line_wrapper .gantt_link_arrow {
+  border-left-color: red !important;
+  border-right-color: red !important;
+}
+
+/* Hide tree icons */
+.gantt_tree_icon {
+  display: none !important;
+}
+
+.gantt_tree_icon.gantt_close, 
+.gantt_tree_icon.gantt_open {
+  display: none !important;
+}
+
+/* Hide sub-task rows */
+.gantt_row.gantt_subtask {
+  display: none !important;
+}
+
+/* Cell alignment */
+.gantt_cell {
+  display: flex;
+  align-items: center;
+}
+
+/* Grid styling - WHITE background for empty space */
+.gantt_grid_scale .gantt_grid_head_cell {
+  background-color: #f5f5f5 !important;
+  border-color: #ddd !important;
+  font-weight: 500;
+}
+
+.gantt_scale_line {
+  background-color: white !important;
+  border-color: #f0f0f0 !important;
+}
+
+/* Project row styling - transparent, no background */
+.gantt_task_project {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.gantt_task_project .gantt_task_bar {
+  display: none !important;
+}
+
+/* Timeline area - WHITE for empty space */
+.gantt_data_area {
+  background-color: white !important;
+}
+
+.gantt_grid_data {
+  background-color: white !important;
+}
+
+.gantt_grid_data .gantt_row {
+  background-color: white !important;
+  border-bottom: 1px solid #f0f0f0 !important;
+}
+
+.gantt-container {
+  width: 100%;
+  height: 100vh;
+}
+
+.gantt_task_line {
+  background-color: #FFD700 !important;
+  border-color: #FFA500 !important;
+}
+
+.gantt_task_progress {
+  background-color: #FFA500 !important;
+}
+
+.gantt_line_wrapper {
+  color: red !important;
+}
+
+.gantt_line_wrapper .gantt_line {
+  stroke: red !important;
+}
+
+/* Optional: arrow head color (depends on theme) */
+.gantt_line_wrapper .gantt_link_arrow {
+  border-left-color: red !important;   /* for LTR arrows */
+  border-right-color: red !important;  /* in some themes/RTL */
+}
+
+.gantt_tree_icon {
+  display: none !important;
+}
+
+/* Hide the expand/collapse icons if you don't want users to see the sub-rows */
+.gantt_tree_icon.gantt_close, 
+.gantt_tree_icon.gantt_open {
+  display: none !important;
+}
+
+/* Hides the sub-rows so only the parent (with the split items) is visible */
+.gantt_row.gantt_subtask {
+  display: none !important;
+}
+
+/* Optional: Center the text in the row if you have row_height: 60 */
+.gantt_cell {
+  display: flex;
+  align-items: center;
+}
