@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { gantt } from "dhtmlx-gantt";
 
 export interface GanttTask {
@@ -15,6 +16,8 @@ export interface GanttTask {
   address?: string;
   priority?: string;
   render?: string;
+  /** "inline" = job bar in same row as technician (no sub-row) */
+  split_placement?: "inline" | "subrow" | "auto";
   [key: string]: any;
 }
 

@@ -1,35 +1,5 @@
 import type { GanttTask } from "../../components/AiScheduler/GanttChart";
 
-
-export const tasks: GanttTask[] = [
-  // THE PERSON (The Container Row)
-  {
-    id: "u1123",
-    text: "Beck, Andrew",
-    wireCenter: "Abbeville AL",
-    type: "project",    // Required for split rendering
-    render: "split",    // This pulls children into this row
-    open: true,         // Must be true to see the children
-  },
-  // THE JOBS (Will appear inside Andrew's row)
-  {
-    id: 1,
-    jobId: 1,
-    parent: "u1123",
-    text: "Sarah Jenkins",
-    start_date: "2025-01-06 00:00",
-    end_date: "2025-01-08 00:00",
-  },
-  {
-    id: 2,
-    jobId: 2,
-    parent: "u1123",
-    text: "Michael Chen",
-    start_date: "2025-01-11 00:00",
-    end_date: "2025-01-13 00:00",
-  },
-];
-
 export const data = [
   {
     jobId: 1123,
@@ -38,25 +8,55 @@ export const data = [
   },
 ];
 
-export const resources = [
-  { id: 1, text: "John", unit: "hours/day" },
-  { id: 7, text: "Mike", unit: "hours/day" },
-  { id: 8, text: "Anna", unit: "hours/day" },
-  { id: 9, text: "Bill", unit: "hours/day" },
-  { id: 10, text: "Floe", unit: "hours/day" },
-];
 
-export const assignments = [
+
+
+
+
+
+
+
+export const tasks: GanttTask[] = [
+  // TECHNICIAN 1: Andrew Becker
   {
-    id: "a1",
-    task_id: "t1_1", // Links to Part A
-    resource_id: "6",
-    value: 3,
-    start_date: "2026-04-03 00:00",
-    end_date: "2026-04-05 00:00",
+    id: "u1",
+    text: "Becker, Andrew",
+    type: "project",
+    render: "split",
+    open: true,
   },
+  { id: 101, parent: "u1", text: "TRIL000126", start_date: "2026-01-30 09:00", end_date: "2026-01-30 11:30" },
+  { id: 102, parent: "u1", text: "JOB-442", start_date: "2026-01-30 13:00", end_date: "2026-01-30 15:00" },
+
+  // TECHNICIAN 2: Thomas Buss
+  {
+    id: "u2",
+    text: "Buss, Thomas",
+    type: "project",
+    render: "split",
+    open: true,
+  },
+  { id: 201, parent: "u2", text: "DSLID013", start_date: "2026-01-30 08:30", end_date: "2026-01-30 10:00" },
+  { id: 202, parent: "u2", text: "DSL0013", start_date: "2026-01-30 10:30", end_date: "2026-01-30 13:00" },
+  { id: 203, parent: "u2", text: "TRIL000196", start_date: "2026-01-30 13:30", end_date: "2026-01-30 16:00" },
+
+  // TECHNICIAN 3: Greg Clark
+  {
+    id: "u3",
+    text: "Clark, Greg",
+    type: "project",
+    render: "split",
+    open: true,
+  },
+  { id: 301, parent: "u3", text: "DSLL00333", start_date: "2026-01-30 11:00", end_date: "2026-01-30 13:30" },
+  { id: 302, parent: "u3", text: "TRIL000126", start_date: "2026-01-30 14:00", end_date: "2026-01-30 17:00" },
 ];
 
+export const resources = [
+  { id: "u1", text: "Becker, Andrew" },
+  { id: "u2", text: "Buss, Thomas" },
+  { id: "u3", text: "Clark, Greg" },
+];
 
 export const unscheduledJobs = [
   {
@@ -68,17 +68,17 @@ export const unscheduledJobs = [
     taskType: "DSL5001AS/",
     duration: "2 hr",
     priority: "Normal",
-    dueDate: "04/24/2024",
+    dueDate: "01/30/2026",
   },
   {
     id: "unscheduled2",
     jobId: "DSLID1002",
-    referenceNo: "MRL0253354001",
+    referenceNo: "MRL0253354002",
     city: "Galesburg IL",
     address: "2570 Hathaway St",
     taskType: "CORRHGENERAL",
     duration: "2 hr",
     priority: "Normal",
-    dueDate: "04/24/2024",
+    dueDate: "01/31/2026",
   },
 ];

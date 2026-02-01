@@ -17,7 +17,7 @@ import {
   TableRow,
 } from "@mui/material";
 import GanttChart from "../../components/AiScheduler/GanttChart/GanttChart";
-import { tasks, assignments, resources, unscheduledJobs } from "./Taskconfig";
+import { tasks, resources, unscheduledJobs } from "./Taskconfig";
 import "./GanttView.css";
 
 type ScaleOption = "day" | "week" | "month";
@@ -30,11 +30,8 @@ const GanttViewPage: React.FC = () => {
     switch (scale) {
       case "day":
         return [
-          { unit: "month", step: 1, date: "%M %Y" },
-
-          { unit: "day", step: 1, date: "%d %M" },
-
-          { unit: "hour", step: 1, date: "%H:%i" },
+          { unit: "day", step: 1, date: "%M %d, %Y" },
+          { unit: "hour", step: 1, date: "%g %A" },
         ];
 
       case "week":
@@ -97,7 +94,6 @@ const GanttViewPage: React.FC = () => {
             <GanttChart
               key={scale}
               tasks={tasks}
-              assignments={assignments}
               resources={resources}
               config={{
                 xml_date: "%Y-%m-%d %H:%i",
@@ -107,8 +103,8 @@ const GanttViewPage: React.FC = () => {
                 columns: [
                   { name: "text", label: "Technician", tree: true, width: 200 },
                 ],
-              start_date: new Date(2025, 0, 1),
-              end_date: new Date(2026, 3, 1),
+              start_date: new Date(2026, 0, 30), 
+    end_date: new Date(2026, 1, 15),
                 smart_rendering: true,
                 static_background: true,
                 readonly: false,
@@ -119,10 +115,12 @@ const GanttViewPage: React.FC = () => {
                 drag_links: false,
                 preserve_scroll: true,
                 row_height: 45,
-                bar_height: 18,
+                bar_height: 24,
                 date_format: "%Y-%m-%d %H:%i",
                 render: "split",
                 min_column_width: scale === "day" ? 60 : 80,
+                 
+    open_split_tasks: true,
               }}
             />
           </Box>

@@ -3,14 +3,36 @@
   height: 100vh;
 }
 
-/* Task bar colors - DARK YELLOW for scheduled jobs */
+/* Scheduled job bars: dark yellow only on the dates you schedule (not full range) */
 .gantt_task_line {
-  background-color: #FFD700 !important;
-  border-color: #FFA500 !important;
+  background-color: #b8860b !important;
+  border-color: #8b6914 !important;
 }
 
 .gantt_task_progress {
-  background-color: #FFA500 !important;
+  background-color: #8b6914 !important;
+}
+
+/* Slightly stronger dark yellow for Jan 6–8 highlight */
+.gantt_task_line.gantt_highlight_jan68 {
+  background-color: #9a7b0a !important;
+  border-color: #6b5508 !important;
+}
+
+.gantt_task_line.gantt_highlight_jan68 .gantt_task_progress {
+  background-color: #6b5508 !important;
+}
+
+/* Hide only the parent (project) bar – job bars stay visible */
+.gantt_task_line.gantt_bar_project {
+  display: none !important;
+}
+
+/* Black vertical line for current time */
+.gantt_marker.gantt_current_time {
+  width: 2px !important;
+  background-color: #000 !important;
+  z-index: 10;
 }
 
 /* Hide expand/collapse tree icons */
@@ -18,15 +40,10 @@
   display: none !important;
 }
 
+
 .gantt_tree_icon.gantt_close, 
 .gantt_tree_icon.gantt_open {
   display: none !important;
-}
-
-/* CRITICAL: Hide sub-task rows - jobs render inline in parent row */
-.gantt_row.gantt_subtask {
-  display: none !important;
-  height: 0 !important;
 }
 
 /* Parent row styling - NO BACKGROUND, completely transparent */
@@ -38,6 +55,7 @@
 .gantt_task_project .gantt_task_bar {
   display: none !important;
   background-color: transparent !important;
+  border: none !important;
 }
 
 /* Cell alignment */
@@ -58,8 +76,17 @@
   border-color: #f0f0f0 !important;
 }
 
-/* Timeline area - WHITE for empty space */
+/* Timeline area - white; gaps with no jobs stay empty */
 .gantt_data_area {
+  background-color: white !important;
+}
+
+/* Timeline cells (no jobs) – keep empty, no fill */
+.gantt_task_cell {
+  background-color: white !important;
+}
+
+.gantt_task_row .gantt_task_cell {
   background-color: white !important;
 }
 
@@ -84,4 +111,40 @@
 .gantt_line_wrapper .gantt_link_arrow {
   border-left-color: red !important;
   border-right-color: red !important;
+}
+
+/* Custom Dispatcher View Styles */
+.custom_dispatcher_job {
+  border-radius: 4px;
+  border: 1px solid #E69A00 !important; /* Force override defaults */
+  background-color: #FDBB30 !important;
+  font-size: 11px;
+  font-weight: bold;
+  color: #333 !important;
+}
+
+.gantt_task_content {
+  padding-left: 5px;
+}
+
+/* Force override any specific task logic if dhtmlx overrides it */
+.gantt_task_line.custom_dispatcher_job {
+    background-color: #FDBB30 !important;
+    border-color: #E69A00 !important;
+}
+
+
+.custom_dispatcher_job {
+    background-color: #FFD54F !important; /* Gold/Yellow */
+    border: 1px solid #FFA000 !important;
+    border-radius: 4px;
+    color: #333 !important;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+/* Hide the expand/collapse icon if you want it to look like a flat list */
+.gantt_tree_icon.gantt_folder_open, 
+.gantt_tree_icon.gantt_folder_closed {
+    display: none !important;
 }
