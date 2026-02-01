@@ -119,8 +119,7 @@ const GanttViewPage: React.FC = () => {
                 date_format: "%Y-%m-%d %H:%i",
                 render: "split",
                 min_column_width: scale === "day" ? 60 : 80,
-                 
-    open_split_tasks: true,
+                open_split_tasks: true,
               }}
             />
           </Box>

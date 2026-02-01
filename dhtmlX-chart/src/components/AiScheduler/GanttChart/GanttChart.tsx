@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { gantt } from "dhtmlx-gantt";
 import "dhtmlx-gantt/codebase/dhtmlxgantt.css";
 import type { GanttChartProps } from "./types";
-import "./GanttChart.css";
+
 
 // Jan 6–8 highlight range (start of Jan 6 to end of Jan 8)
 
@@ -75,6 +75,20 @@ export default function GanttChart({
     gantt.templates.task_class = (start: Date, end: Date, task: any) => {
       return "custom_dispatcher_job";
     };
+    // ... inside your GanttChart component useEffect
+
+// Dynamic Styling based on "Now"
+gantt.templates.task_class = (start: Date, end: Date, task: any) => {
+  const now = new Date();
+  
+  // If the task is a job (has a parent) and started before "now"
+  if (task.parent && start < now) {
+    return "job_past_green";
+  }
+  
+  // Default for upcoming tasks
+  return "job_upcoming_gold";
+};
 
     if (containerRef.current) {
       gantt.init(containerRef.current);

@@ -36,9 +36,9 @@ export const tasks: GanttTask[] = [
     render: "split",
     open: true,
   },
-  { id: 201, parent: "u2", text: "DSLID013", start_date: "2026-01-30 08:30", end_date: "2026-01-30 10:00" },
-  { id: 202, parent: "u2", text: "DSL0013", start_date: "2026-01-30 10:30", end_date: "2026-01-30 13:00" },
-  { id: 203, parent: "u2", text: "TRIL000196", start_date: "2026-01-30 13:30", end_date: "2026-01-30 16:00" },
+  { id: 201, parent: "u2", text: "DSLID013", start_date: "2026-02-02 08:30", end_date: "2026-02-02 10:00" },
+  { id: 202, parent: "u2", text: "DSL0013", start_date: "2026-02-03 10:30", end_date: "2026-01-03 13:00" },
+  { id: 203, parent: "u2", text: "TRIL000196", start_date: "2026-02-03 13:30", end_date: "2026-02-03 16:00" },
 
   // TECHNICIAN 3: Greg Clark
   {

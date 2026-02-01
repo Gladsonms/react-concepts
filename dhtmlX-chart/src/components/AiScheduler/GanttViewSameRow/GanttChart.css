@@ -1,0 +1,96 @@
+/* Ensure the parent row can display absolute positioned children */
+.gantt_task_content {
+  overflow: visible !important;
+}
+
+.gantt_task_line {
+  overflow: visible !important;
+}
+
+/* Custom Subtask Bars for the Single-Line View */
+.subtask_inline_bar {
+  position: absolute;
+  height: 28px;
+  line-height: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 0 8px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  z-index: 3;
+  pointer-events: auto;
+  cursor: move;
+  opacity: 1 !important;
+}
+
+/* Subtask Green (Past) */
+.subtask_past_green {
+  background-color: #4CAF50 !important;
+  border: 1px solid #388E3C !important;
+  color: white !important;
+  opacity: 1 !important;
+}
+
+/* Subtask Gold (Upcoming) */
+.subtask_upcoming_gold {
+  background-color: #FFD54F !important;
+  border: 1px solid #FFA000 !important;
+  color: #333 !important;
+  opacity: 1 !important;
+}
+
+/* Parent Row styling - make it transparent so we only see the inline bars */
+.technician_parent_row {
+  background-color: transparent !important;
+  border: none !important;
+  opacity: 1 !important;
+}
+
+.technician_parent_row .gantt_task_content {
+  background-color: transparent !important;
+  opacity: 1 !important;
+}
+
+/* Ensure parent task bars are not faded */
+.gantt_task_line.technician_parent_row {
+  opacity: 1 !important;
+  background-color: transparent !important;
+}
+
+/* Make sure the gantt bars themselves are visible */
+.gantt_task_line {
+  opacity: 1 !important;
+}
+
+.gantt_side_content {
+  opacity: 1 !important;
+}
+
+/* Hide standard tree icons to match screenshot */
+.gantt_tree_icon {
+  display: none !important;
+}
+
+/* Ensure all visible tasks have full opacity */
+.gantt_row {
+  opacity: 1 !important;
+}
+
+.gantt_task_row {
+  opacity: 1 !important;
+}
+
+/* Dragging state for subtasks */
+.subtask_inline_bar:hover {
+  opacity: 0.9 !important;
+  cursor: move;
+}
+
+.subtask_inline_bar:active {
+  opacity: 0.8 !important;
+  cursor: grabbing;
+}
+
