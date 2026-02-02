@@ -57,5 +57,7 @@ export interface GanttChartProps {
   onInit?: (ganttInstance: typeof gantt) => void;
   /** Optional cleanup hook */
   onDestroy?: (ganttInstance: typeof gantt) => void;
+  /** Optional onChange callback when task is updated */
+  onChange?: (taskId: string | number, startDate: Date, endDate: Date) => void;
   height?: string | number;
 }

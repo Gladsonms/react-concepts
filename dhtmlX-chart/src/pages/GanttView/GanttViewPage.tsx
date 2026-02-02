@@ -95,6 +95,12 @@ const GanttViewPage: React.FC = () => {
               key={scale}
               tasks={tasks}
               resources={resources}
+              onChange={(taskId, startDate, endDate) => {
+                console.log("Task updated after drag:");
+                console.log("Task ID:", taskId);
+                console.log("Start Date:", startDate);
+                console.log("End Date:", endDate);
+              }}
               config={{
                 xml_date: "%Y-%m-%d %H:%i",
                 grid_width: 250,

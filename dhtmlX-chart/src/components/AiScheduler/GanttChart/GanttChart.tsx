@@ -16,9 +16,11 @@ export default function GanttChart({
   onDestroy,
   height = 500,
   resources,
+  onChange,
 }: GanttChartProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const currentTimeMarkerId = useRef<string | number | null>(null);
+  const eventsAttached = useRef<boolean>(false);
 
 
 
@@ -59,7 +61,7 @@ export default function GanttChart({
     });
 
     // Template for resource cell
-    gantt.templates.resource_cell_value = (resource: any, date: Date, tasks: any[]) => {
+    gantt.templates.resource_cell_value = (resource: any, _date: Date, tasks: any[]) => {
       // return "<div>" + resource.text + " (" + tasks.length + ")</div>";
       return "<div>" + (resource.text || "") + " (" + tasks.length + " jobs)</div>";
     };
@@ -72,35 +74,21 @@ export default function GanttChart({
     };
 
     // Styling
-    gantt.templates.task_class = (start: Date, end: Date, task: any) => {
-      return "custom_dispatcher_job";
+    // Dynamic Styling based on "Now"
+    gantt.templates.task_class = (start: Date, _end: Date, task: any) => {
+      const now = new Date();
+      
+      // If the task is a job (has a parent) and started before "now"
+      if (task.parent && start < now) {
+        return "job_past_green";
+      }
+      
+      // Default for upcoming tasks
+      return "job_upcoming_gold";
     };
-    // ... inside your GanttChart component useEffect
-
-// Dynamic Styling based on "Now"
-gantt.templates.task_class = (start: Date, end: Date, task: any) => {
-  const now = new Date();
-  
-  // If the task is a job (has a parent) and started before "now"
-  if (task.parent && start < now) {
-    return "job_past_green";
-  }
-  
-  // Default for upcoming tasks
-  return "job_upcoming_gold";
-};
 
     if (containerRef.current) {
       gantt.init(containerRef.current);
-      
-      // Load resources into the specific list that the 'group: "resource"' layout likely defaults to or we explicitly set.
-      // If layout group is "resource", it often looks for a serverList named "resource" (or whatever the group id is).
-      // Let's assume the component will handle populating the grid via the content we pass.
-      
-      // Important: For resource view to work, we often need to pass resources as part of the parse data or update a store.
-      // DHTMLX Gantt's `group` mode often iterates unique values of `resource_property`.
-      // But if we want to show ALL resources including empty ones, we need to pass them.
-      // I'll update the parse call below.
     }
 
     // Marker logic...
@@ -156,6 +144,45 @@ gantt.templates.task_class = (start: Date, end: Date, task: any) => {
         collections: { resource: resources }
     });
 
+    // Attach drag event handlers only once
+    if (!eventsAttached.current && onChange) {
+      // Store original duration before drag starts
+      let originalDuration: number | null = null;
+      
+      gantt.attachEvent("onBeforeTaskDrag", (id: any) => {
+        const task = gantt.getTask(id);
+        if (task && task.start_date && task.end_date) {
+          // Calculate and store the original duration in milliseconds
+          originalDuration = new Date(task.end_date).getTime() - new Date(task.start_date).getTime();
+        }
+        return true;
+      });
+      
+      gantt.attachEvent("onAfterTaskDrag", (id: any) => {
+        const task = gantt.getTask(id);
+        if (task && task.start_date && originalDuration !== null) {
+          // Restore the duration by setting end_date based on start_date + original duration
+          const newStartTime = new Date(task.start_date).getTime();
+          task.end_date = new Date(newStartTime + originalDuration);
+          
+          // Update the task with the corrected end_date
+          gantt.updateTask(id);
+          
+          // Only trigger onChange for actual tasks (not parent rows)
+          if (task.parent) {
+            console.log("Drag completed for task:", id);
+            onChange(id, new Date(task.start_date), new Date(task.end_date));
+          }
+          
+          // Reset the stored duration
+          originalDuration = null;
+        }
+        return true;
+      });
+      
+      eventsAttached.current = true;
+    }
+
     currentTimeMarkerId.current = gantt.addMarker({
       start_date: new Date(),
       css: "gantt_current_time",
@@ -164,7 +191,7 @@ gantt.templates.task_class = (start: Date, end: Date, task: any) => {
         new Date()
       ),
     });
-  }, [tasks, resources, config?.start_date, config?.end_date]);
+  }, [tasks, resources, config?.start_date, config?.end_date, onChange]);
 
   return (
     <div
